@@ -43,14 +43,15 @@ var FinesCreate = /** @class */ (function () {
     }
     FinesCreate.prototype.create = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, userId, violation, price, data, status_1, Create, e_1;
+            var _a, userId, vehiclesId, violation, price, data, status_1, Create, e_1;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         _b.trys.push([0, 2, , 3]);
-                        _a = req.body, userId = _a.userId, violation = _a.violation, price = _a.price, data = _a.data, status_1 = _a.status;
+                        _a = req.body, userId = _a.userId, vehiclesId = _a.vehiclesId, violation = _a.violation, price = _a.price, data = _a.data, status_1 = _a.status;
                         return [4 /*yield*/, models_1.Fines.create({
                                 userId: userId,
+                                vehiclesId: vehiclesId,
                                 violation: violation,
                                 price: price,
                                 data: data,

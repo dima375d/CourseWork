@@ -9,12 +9,14 @@ var userController_1 = __importDefault(require("../controllers/userController"))
 var finesController_1 = __importDefault(require("../controllers/finesController"));
 var vehiclesController_1 = __importDefault(require("../controllers/vehiclesController"));
 var allmessageController_1 = __importDefault(require("../controllers/allmessageController"));
+var authMiddleware_1 = __importDefault(require("../middleware/authMiddleware"));
+var checkRoleMiddleware_1 = __importDefault(require("../middleware/checkRoleMiddleware"));
 var router = (0, express_1.Router)();
 router.post("/registration", userController_1.default.registration);
 router.post("/login", userController_1.default.login);
 router.put("/userupdate", userController_1.default.update);
-router.get("/check", userController_1.default.check);
-router.post("/createFines", finesController_1.default.create);
+router.get("/check", authMiddleware_1.default, userController_1.default.check);
+router.post("/createFines", checkRoleMiddleware_1.default, finesController_1.default.create);
 router.get("/getAllFines", finesController_1.default.getAll);
 router.get("/geOneFines", finesController_1.default.getOne);
 router.put("/paymentFines", finesController_1.default.payment);
